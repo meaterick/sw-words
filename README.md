@@ -28,8 +28,8 @@
 
 ## 마일스톤
 
-https://github.com/meaterick/sw-words/milestone/1
-https://github.com/meaterick/sw-words/milestone/2
+https://github.com/meaterick/sw-words/milestone/1  
+https://github.com/meaterick/sw-words/milestone/2  
 https://github.com/meaterick/sw-words/milestone/3
 
 
