@@ -25,3 +25,4 @@ flowchart LR
 ```mermaid
 classDiagram
 ...
+```
