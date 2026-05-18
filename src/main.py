@@ -68,19 +68,127 @@ class Quiz:
 
         if self.subject.subject_name == "Python":
             self.questions = [
-                Question(
-                    1,
-                    "Python에서 리스트를 생성하는 기호는?",
-                    "[]",
-                    "리스트는 대괄호 [] 를 사용하여 생성한다."
-                ),
-                Question(
-                    2,
-                    "Python에서 함수 선언 키워드는?",
-                    "def",
-                    "함수는 def 키워드를 사용한다."
-                )
-            ]
+        Question(
+            1,
+            "Python에서 리스트를 생성할 때 사용하는 기호는?",
+            "[]",
+            "리스트는 대괄호 [] 를 사용하여 생성한다."
+        ),
+        Question(
+            2,
+            "Python에서 함수 선언에 사용하는 키워드는?",
+            "def",
+            "함수는 def 키워드로 선언한다."
+        ),
+        Question(
+            3,
+            "Python에서 조건문에 사용하는 키워드는?",
+            "if",
+            "조건문은 if 키워드를 사용한다."
+        ),
+        Question(
+            4,
+            "Python에서 반복문에 사용하는 키워드 중 하나는?",
+            "for",
+            "for 문은 반복 작업에 사용된다."
+        ),
+        Question(
+            5,
+            "Python에서 값을 출력하는 함수는?",
+            "print",
+            "print() 함수는 값을 출력한다."
+        ),
+        Question(
+            6,
+            "Python에서 사용자 입력을 받는 함수는?",
+            "input",
+            "input() 함수는 사용자 입력을 받는다."
+        ),
+        Question(
+            7,
+            "Python에서 한 줄 주석에 사용하는 기호는?",
+            "#",
+            "# 기호 뒤의 내용은 주석 처리된다."
+        ),
+        Question(
+            8,
+            "Python에서 문자열 자료형의 이름은?",
+            "str",
+            "문자열 자료형은 str 이다."
+        ),
+        Question(
+            9,
+            "Python에서 정수 자료형의 이름은?",
+            "int",
+            "정수 자료형은 int 이다."
+        ),
+        Question(
+            10,
+            "Python에서 실수 자료형의 이름은?",
+            "float",
+            "실수 자료형은 float 이다."
+        ),
+        Question(
+            11,
+            "Python에서 참/거짓 자료형의 이름은?",
+            "bool",
+            "참/거짓 자료형은 bool 이다."
+        ),
+        Question(
+            12,
+            "Python에서 데이터의 길이를 구하는 함수는?",
+            "len",
+            "len() 함수는 데이터의 길이를 반환한다."
+        ),
+        Question(
+            13,
+            "Python에서 클래스를 선언할 때 사용하는 키워드는?",
+            "class",
+            "클래스는 class 키워드로 선언한다."
+        ),
+        Question(
+            14,
+            "Python에서 예외 처리를 시작할 때 사용하는 키워드는?",
+            "try",
+            "예외 처리는 try 문으로 시작한다."
+        ),
+        Question(
+            15,
+            "Python에서 반복문을 즉시 종료하는 키워드는?",
+            "break",
+            "break 는 반복문을 즉시 종료한다."
+        ),
+        Question(
+            16,
+            "Python에서 현재 반복을 건너뛰고 다음 반복으로 넘어가는 키워드는?",
+            "continue",
+            "continue 는 다음 반복으로 넘어간다."
+        ),
+        Question(
+            17,
+            "Python 파일의 기본 확장자는?",
+            ".py",
+            "Python 파일은 .py 확장자를 사용한다."
+        ),
+        Question(
+            18,
+            "Python에서 딕셔너리를 생성할 때 사용하는 기호는?",
+            "{}",
+            "딕셔너리는 중괄호 {} 를 사용한다."
+        ),
+        Question(
+            19,
+            "Python에서 튜플을 생성할 때 사용하는 기호는?",
+            "()",
+            "튜플은 소괄호 () 를 사용한다."
+        ),
+        Question(
+            20,
+            "Python에서 여러 줄 문자열 작성에 사용할 수 있는 기호는?",
+            "\"\"\"",
+            "여러 줄 문자열에는 삼중 따옴표를 사용할 수 있다."
+        )
+        ]
 
         elif self.subject.subject_name == "Math":
             self.questions = [
