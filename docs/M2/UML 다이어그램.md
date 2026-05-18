@@ -18,38 +18,34 @@ NFR-02	보안	시스템은 사용자 학습 데이터 및 기록을 안전하게
 
 ```mermaid
 flowchart LR
-    User([일반 사용자])
+    %% 사용자
+    User([일반 사용자])
 
-    UC1((과목 및 시험 범위 선택))
-    UC2((범위 기반 퀴즈 생성))
-    UC3((퀴즈 풀이))
-    UC4((정답 제출))
-    UC5((정답/오답/해설 확인))
-    UC6((오답 문제 자동 저장))
-    UC7((오답 문제 다시 풀기))
-    UC8((퀴즈 풀이 기록 확인))
+    %% 유스케이스
+    UC1((과목 및 시험 범위 선택))
+    UC2((범위 기반 퀴즈 생성))
+    UC3((퀴즈 풀이))
+    UC4((정답 제출))
+    UC5((정답/오답/해설 확인))
+    UC6((오답 문제 자동 저장))
+    UC7((오답 문제 다시 풀기))
+    UC8((퀴즈 풀이 기록 확인))
 
-    INC1[<<include>>]
-    INC2[<<include>>]
-    INC3[<<include>>]
+    %% 사용자 연결
+    User --> UC2
+    User --> UC3
+    User --> UC5
+    User --> UC7
+    User --> UC8
 
-    EXT1[<<extend>>]
-    EXT2[<<extend>>]
+    %% include 관계
+    UC2 -. «include» .-> UC1
+    UC3 -. «include» .-> UC4
+    UC5 -. «include» .-> UC4
 
-    User --> UC2
-    User --> UC3
-    User --> UC5
-    User --> UC7
-    User --> UC8
-
-    %% include 관계
-    UC2 -.-> INC1 -.-> UC1
-    UC3 -.-> INC2 -.-> UC4
-    UC5 -.-> INC3 -.-> UC4
-
-    %% extend 관계
-    UC6 -.-> EXT1 -.-> UC5
-    UC7 -.-> EXT2 -.-> UC6
+    %% extend 관계
+    UC6 -. «extend» .-> UC5
+    UC7 -. «extend» .-> UC6
 ```
 ---
 # 클래스 다이어그램
