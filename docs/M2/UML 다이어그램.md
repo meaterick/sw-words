@@ -29,7 +29,7 @@ flowchart LR
     UC7((오답 문제 다시 풀기))
     UC8((퀴즈 풀이 기록 확인))
 
-    INC1[<include>]
+    INC1[<<include>>]
     INC2[<<include>>]
     INC3[<<include>>]
 
