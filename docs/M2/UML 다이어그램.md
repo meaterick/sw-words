@@ -36,14 +36,15 @@ flowchart LR
     User --> UC8
 
     %% include 관계
-    UC2 -. "<<include>>" .-> UC1
-    UC3 -. "<<include>>" .-> UC4
-    UC5 -. "<<include>>" .-> UC4
+    UC2 -. |<<include>>| .-> UC1
+    UC3 -. |<<include>>| .-> UC4
+    UC5 -. |<<include>>| .-> UC4
 
     %% extend 관계
-    UC6 -. "<<extend>>" .-> UC5
-    UC7 -. "<<extend>>" .-> UC6
+    UC6 -. |<<extend>>| .-> UC5
+    UC7 -. |<<extend>>| .-> UC6
 ```
+
 ---
 # 클래스 다이어그램
 
