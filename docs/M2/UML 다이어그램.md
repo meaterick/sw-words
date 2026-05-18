@@ -95,7 +95,7 @@ class Answer {
     -answerId: int
     -userAnswer: String
     -isCorrect: boolean
-    +submitAnswer(): void
+    +submitAnswer() void
     +getResult(): boolean
 }
 
