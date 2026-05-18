@@ -44,4 +44,73 @@ flowchart LR
     UC6 -. "<<extend>>" .-> UC5
     UC7 -. "<<extend>>" .-> UC6
 ```
+---
+#classDiagram
 
+class User {
+    -userId: int
+    -name: String
+    +selectSubject(): void
+    +viewQuizHistory(): void
+}
+
+class Subject {
+    -subjectId: int
+    -subjectName: String
+    +getExamRange(): String
+    +setExamRange(range: String): void
+}
+
+class Quiz {
+    -quizId: int
+    -createdDate: Date
+    +generateQuiz(): void
+    +getQuestions(): List<Question>
+}
+
+class Question {
+    -questionId: int
+    -content: String
+    -answer: String
+    +checkAnswer(userAnswer: String): boolean
+    +showExplanation(): String
+}
+
+class Answer {
+    -answerId: int
+    -userAnswer: String
+    -isCorrect: boolean
+    +submitAnswer(): void
+    +getResult(): boolean
+}
+
+class WrongAnswerNote {
+    -noteId: int
+    -savedDate: Date
+    +saveWrongQuestion(q: Question): void
+    +retryQuestion(): void
+}
+
+class QuizHistory {
+    -historyId: int
+    -solveDate: Date
+    +saveRecord(): void
+    +viewRecord(): List<Quiz>
+}
+
+%% 관계 정의
+User --> Quiz : solves
+User --> QuizHistory : views
+User --> WrongAnswerNote : manages
+
+Quiz --> Subject : based on
+Quiz "1" *-- "many" Question : contains
+
+Question --> Answer : checked by
+
+WrongAnswerNote --> Question : stores
+
+QuizHistory --> Quiz : records
+
+Answer ..> Question : depends on
+WrongAnswerNote ..> Answer : uses
