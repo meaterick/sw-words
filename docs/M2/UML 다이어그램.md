@@ -65,30 +65,30 @@ classDiagram
 class User {
     -userId: int
     -name: String
-    +selectSubject(): void
-    +viewQuizHistory(): void
+    +selectSubject() void
+    +viewQuizHistory() void
 }
 
 class Subject {
     -subjectId: int
     -subjectName: String
-    +getExamRange(): String
-    +setExamRange(range: String): void
+    +getExamRange() String
+    +setExamRange(range: String) void
 }
 
 class Quiz {
     -quizId: int
     -createdDate: Date
-    +generateQuiz(): void
-    +getQuestions(): List<Question>
+    +generateQuiz() void
+    +getQuestions() List<Question>
 }
 
 class Question {
     -questionId: int
     -content: String
     -answer: String
-    +checkAnswer(userAnswer: String): boolean
-    +showExplanation(): String
+    +checkAnswer(userAnswer: String) boolean
+    +showExplanation() String
 }
 
 class Answer {
@@ -96,21 +96,21 @@ class Answer {
     -userAnswer: String
     -isCorrect: boolean
     +submitAnswer() void
-    +getResult(): boolean
+    +getResult() boolean
 }
 
 class WrongAnswerNote {
     -noteId: int
     -savedDate: Date
-    +saveWrongQuestion(q: Question): void
-    +retryQuestion(): void
+    +saveWrongQuestion(q: Question) void
+    +retryQuestion() void
 }
 
 class QuizHistory {
     -historyId: int
     -solveDate: Date
-    +saveRecord(): void
-    +viewRecord(): List<Quiz>
+    +saveRecord() void
+    +viewRecord() List<Quiz>
 }
 
 %% 관계 정의
