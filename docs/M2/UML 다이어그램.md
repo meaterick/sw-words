@@ -29,27 +29,20 @@ flowchart LR
     UC7((오답 문제 다시 풀기))
     UC8((퀴즈 풀이 기록 확인))
 
-    INC1[<<include>>]
-    INC2[<<include>>]
-    INC3[<<include>>]
-
-    EXT1[<<extend>>]
-    EXT2[<<extend>>]
-
     User --> UC2
     User --> UC3
     User --> UC5
     User --> UC7
     User --> UC8
 
-    %% include 관계
-    UC2 -.-> INC1 -.-> UC1
-    UC3 -.-> INC2 -.-> UC4
-    UC5 -.-> INC3 -.-> UC4
+    %% include 관계 (안전한 텍스트 링크 방식)
+    UC2 -.-->|include| UC1
+    UC3 -.-->|include| UC4
+    UC5 -.-->|include| UC4
 
-    %% extend 관계
-    UC6 -.-> EXT1 -.-> UC5
-    UC7 -.-> EXT2 -.-> UC6
+    %% extend 관계 (안전한 텍스트 링크 방식)
+    UC6 -.-->|extend| UC5
+    UC7 -.-->|extend| UC6
 ```
 
 ---
