@@ -28,7 +28,8 @@ class Question:
         self.explanation = explanation
 
     def check_answer(self, user_answer):
-        return self.answer.lower() == user_answer.lower()
+        # 사용자가 실수로 입력한 앞뒤 공백을 제거하고 비교
+        return self.answer.lower() == user_answer.strip().lower()
 
     def show_explanation(self):
         return self.explanation
@@ -59,6 +60,7 @@ class Quiz:
         self.subject = subject
         self.created_date = datetime.now()
         self.questions = []
+        self.answers = []
 
     def generate_quiz(self):
         """
@@ -203,6 +205,42 @@ class Quiz:
                     "10 / 2 = ?",
                     "5",
                     "10을 2로 나누면 5이다."
+                ),
+                Question(
+                    3,
+                    "5 * 6 = ?",
+                    "30",
+                    "5와 6을 곱하면 30이다."
+                ),
+                Question(
+                    4,
+                    "9 - 4 = ?",
+                    "5",
+                    "9에서 4를 빼면 5이다."
+                ),
+                Question(
+                    5,
+                    "7 + 8 = ?",
+                    "15",
+                    "7과 8을 더하면 15이다."
+                ),
+                Question(
+                    6,
+                    "12 / 3 = ?",
+                    "4",
+                    "12를 3으로 나누면 4이다."
+                ),
+                Question(
+                    7,
+                    "2 * 7 = ?",
+                    "14",
+                    "2와 7을 곱하면 14이다."
+                ),
+                Question(
+                    8,
+                    "15 - 9 = ?",
+                    "6",
+                    "15에서 9를 빼면 6이다."
                 )
             ]
 
@@ -220,20 +258,27 @@ class WrongAnswerNote:
         self.wrong_questions = []
 
     def save_wrong_question(self, question):
-        self.wrong_questions.append(question)
+        # 이미 동일한 문제가 오답 노트에 있으면 중복 저장 방지
+        if question not in self.wrong_questions:
+            self.wrong_questions.append(question)
 
     def retry_question(self):
         print("\n===== 오답 다시 풀기 =====")
+
+        still_wrong_questions = []
 
         for question in self.wrong_questions:
             print(f"\n문제: {question.content}")
             user_answer = input("답 입력: ")
 
             if question.check_answer(user_answer):
-                print("정답입니다!")
+                print("정답입니다! (오답 노트에서 삭제됩니다.)")
             else:
                 print("오답입니다.")
                 print("해설:", question.show_explanation())
+                still_wrong_questions.append(question)
+
+        self.wrong_questions = still_wrong_questions
 
 
 # -----------------------------
@@ -330,12 +375,12 @@ def main():
 
         answer = Answer(question.question_id, user_answer)
         answer.submit_answer(question)
+        quiz.answers.append(answer)
 
         # 정답 확인
         if answer.get_result():
             print("정답입니다!")
             score += 1
-
         else:
             print("오답입니다.")
             print("정답:", question.answer)
@@ -354,11 +399,14 @@ def main():
     # 기록 조회
     user.view_quiz_history()
 
-    # 오답 다시 풀기
-    retry = input("\n오답 문제를 다시 풀겠습니까? (y/n): ")
-
-    if retry.lower() == "y":
-        user.wrong_answer_note.retry_question()
+    if user.wrong_answer_note.wrong_questions:
+        retry = input("\n오답 문제를 다시 풀겠습니까? (y/n): ")
+        if retry.lower() == "y":
+            user.wrong_answer_note.retry_question()
+            if not user.wrong_answer_note.wrong_questions:
+                print("\n🎉 축하합니다! 모든 오답을 맞혀 오답 노트가 비었습니다.")
+    else:
+        print("\n✨ 만점입니다! 틀린 문제가 없습니다.")
 
 
 # 프로그램 실행
