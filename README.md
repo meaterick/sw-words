@@ -37,7 +37,10 @@ https://github.com/meaterick/sw-words/milestone/3
 
 - [M1 기획서](docs/M1)
 - [M2 기획서](docs/M2)
+- [M3 기획서](docs/M3)
+- [AI logs](docs/AIlogs)
 - [회의록](docs/meetings)
+- [최종보고서](M3_최종보고서_단어즈.md)
 - [요구사항정의서(인터뷰,작성가이드)](https://docs.google.com/document/d/1bhnPty6jtIl_68x8vGKDf4KezQ3NlOK0/edit?usp=sharing&ouid=111744214992274688558&rtpof=true&sd=true)
 
 
