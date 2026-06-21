@@ -1,11 +1,12 @@
 # 유스케이스 다이어그램 
 
 ```mermaid
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#E8E5FF', 'primaryTextColor': '#2D2D3A', 'lineColor': '#555555', 'nodeBorder': '#B3A9FF'}}}%%
 flowchart LR
     %% 사용자
     User([일반 사용자])
 
-    %% 유스케이스
+    %% 유스케이스들
     UC1((과목 및 시험 범위 선택))
     UC2((범위 기반 퀴즈 생성))
     UC3((퀴즈 풀이))
@@ -25,11 +26,9 @@ flowchart LR
     %% include 관계
     UC2 -. «include» .-> UC1
     UC3 -. «include» .-> UC4
-    UC5 -. «include» .-> UC4
 
     %% extend 관계
     UC6 -. «extend» .-> UC5
-    UC7 -. «extend» .-> UC6
 ```
 ---
 # 클래스 다이어그램
@@ -37,18 +36,19 @@ flowchart LR
 아래는 시험 범위 기반 퀴즈 시스템의 유스케이스를 기반으로 작성한 클래스 다이어그램이다.
 
 ```mermaid
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#F0EDFF', 'primaryTextColor': '#2D2D3A', 'lineColor': '#666666', 'nodeBorder': '#C0B5FF'}}}%%
 classDiagram
-
 class User {
     -userId: int
     -name: String
-    +selectSubject() void
+    +selectSubject() Subject
     +viewQuizHistory() void
 }
 
 class Subject {
     -subjectId: int
     -subjectName: String
+    -examRange: String
     +getExamRange() String
     +setExamRange(range: String) void
 }
@@ -56,14 +56,17 @@ class Subject {
 class Quiz {
     -quizId: int
     -createdDate: Date
+    -questions: List~Question~
+    -answers: List~Answer~
     +generateQuiz() void
-    +getQuestions() List<Question>
+    +getQuestions() List~Question~
 }
 
 class Question {
     -questionId: int
     -content: String
     -answer: String
+    -explanation: String
     +checkAnswer(userAnswer: String) boolean
     +showExplanation() String
 }
@@ -72,13 +75,14 @@ class Answer {
     -answerId: int
     -userAnswer: String
     -isCorrect: boolean
-    +submitAnswer() void
+    +submitAnswer(q: Question) void
     +getResult() boolean
 }
 
 class WrongAnswerNote {
     -noteId: int
     -savedDate: Date
+    -wrongQuestions: List~Question~
     +saveWrongQuestion(q: Question) void
     +retryQuestion() void
 }
@@ -86,26 +90,20 @@ class WrongAnswerNote {
 class QuizHistory {
     -historyId: int
     -solveDate: Date
-    +saveRecord() void
-    +viewRecord() List<Quiz>
+    -records: List
+    +saveRecord(quiz: Quiz, score: int) void
+    +viewRecord() void
 }
 
-%% 관계 정의
 User --> Quiz : solves
 User --> QuizHistory : views
 User --> WrongAnswerNote : manages
-
 Quiz --> Subject : based on
 Quiz "1" *-- "many" Question : contains
-
-Question --> Answer : checked by
-
-WrongAnswerNote --> Question : stores
-
-QuizHistory --> Quiz : records
-
-Answer ..> Question : depends on
-WrongAnswerNote ..> Answer : uses
+Quiz "1" --> "many" Answer : manages
+Answer --> Question : targets
+WrongAnswerNote --> "many" Question : stores
+QuizHistory --> "many" Quiz : records
 ```
 
 ---
