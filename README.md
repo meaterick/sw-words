@@ -37,7 +37,7 @@ https://github.com/meaterick/sw-words/milestone/3
 
 - [M1 기획서](docs/M1)
 - [M2 기획서](docs/M2)
-- [회의록](docs/meetings)
+- [회의록](docs/meetings) — #1(4/6) #2(4/13) #3(4/20) #4(4/27) #5(5/7) #6(5/14) #7(5/21) #8(5/28) #9(6/8) #10(6/18)
 - [요구사항정의서(인터뷰,작성가이드)](https://docs.google.com/document/d/1bhnPty6jtIl_68x8vGKDf4KezQ3NlOK0/edit?usp=sharing&ouid=111744214992274688558&rtpof=true&sd=true)
 
 
